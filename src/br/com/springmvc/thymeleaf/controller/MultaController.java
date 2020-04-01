@@ -29,7 +29,7 @@ public class MultaController {
 		ModelAndView modelo = new ModelAndView("/multas.html");
 		
 		 List<Multa> lista = BD.stream()
-	                .collect(Collectors.toList());
+	                .collect(Collectors.toList());//
 	        
 	        modelo.addObject("multas", lista);
 		
