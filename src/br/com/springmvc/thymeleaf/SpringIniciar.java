@@ -1,17 +1,14 @@
 package br.com.springmvc.thymeleaf;
 
-import java.util.EnumSet;
-
-import javax.servlet.DispatcherType;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
-
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.request.RequestContextListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+
 import org.springframework.web.servlet.DispatcherServlet;
 
 public class SpringIniciar implements WebApplicationInitializer {
@@ -30,18 +27,10 @@ public class SpringIniciar implements WebApplicationInitializer {
         dispatcher.setLoadOnStartup(1);
         dispatcher.addMapping("/");
         
-
     }
     
     private DispatcherServlet dispatcherServlet(WebApplicationContext applicationContext) {
         return new DispatcherServlet(applicationContext);
     }
     
-
-    
-    private EnumSet<DispatcherType> dispatcherTypes(boolean asyncSupported) {
-        return (asyncSupported ?
-                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD, DispatcherType.INCLUDE, DispatcherType.ASYNC) :
-                EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD, DispatcherType.INCLUDE));
-    }
 }
